@@ -43,7 +43,7 @@ public class PostsFragment extends Fragment {
         View view = inflater.inflate(R.layout.card_view, container, false);
 
         cardArrayRecyclerViewAdapter = new CardArrayRecyclerViewAdapter(getActivity(), getCards());
-        cardRecyclerView = (CardRecyclerView) view.findViewById(R.id.card_recycler_view);
+        cardRecyclerView = (CardRecyclerView) view.findViewById(R.id.cvCardRecyclerView);
         cardRecyclerView.setHasFixedSize(false);
         cardRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         if(cardRecyclerView != null) {
@@ -84,22 +84,36 @@ public class PostsFragment extends Fragment {
                     card.setOnClickListener(new Card.OnCardClickListener() {
                         @Override
                         public void onClick(Card card, View view) {
-                            PostWebViewFragment postWebViewFragment = PostWebViewFragment.newInstance(post.url);
-                            FragmentManager fragmentManager = getFragmentManager();
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.card_container, postWebViewFragment);
-                            fragmentTransaction.commit();
+                            openWebViewFragment(post);
                         }
                     });
 
                     myCards.add(card);
                 } else {
                     TextOnlyCard card = new TextOnlyCard(getActivity(), post.url, post.title, post.author);
+
+                    card.setOnClickListener(new Card.OnCardClickListener() {
+                        @Override
+                        public void onClick(Card card, View view) {
+                            openWebViewFragment(post);
+                        }
+                    });
+
                     myCards.add(card);
                 }
             }
             cardArrayRecyclerViewAdapter.addAll(myCards);
         }
+
+        private void openWebViewFragment(Post post) {
+            PostWebViewFragment postWebViewFragment = PostWebViewFragment.newInstance(post.url);
+            FragmentManager fragmentManager = getFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.flFragmentContainer, postWebViewFragment);
+            fragmentTransaction.commit();
+        }
+
+
     }
 
 }

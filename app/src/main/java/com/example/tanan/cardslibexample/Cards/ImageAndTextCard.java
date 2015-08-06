@@ -15,9 +15,9 @@ import it.gmariotti.cardslib.library.internal.Card;
  * Created by tanan on 5/8/15.
  */
 public class ImageAndTextCard extends Card {
-    ImageView card_thumbnail_image;
-    TextView card_title;
-    TextView card_author;
+    ImageView ivCardThumbnail;
+    TextView tvCardTitle;
+    TextView tvCardAuthor;
     String url;
     String title;
     String author;
@@ -33,18 +33,18 @@ public class ImageAndTextCard extends Card {
 
     @Override
     public void setupInnerViewElements(ViewGroup parent, View view) {
-        card_title = (TextView) parent.findViewById(R.id.card_title);
-        card_author = (TextView) parent.findViewById(R.id.card_author);
-        card_thumbnail_image = (ImageView) parent.findViewById(R.id.card_thumbnail_image);
+        tvCardTitle = (TextView) parent.findViewById(R.id.tvCardTitle);
+        tvCardAuthor = (TextView) parent.findViewById(R.id.tvCardAuthor);
+        ivCardThumbnail = (ImageView) parent.findViewById(R.id.ivCardThumbnail);
 
-        if(card_author != null) {
-            card_author.setText(author);
+        if(tvCardAuthor != null) {
+            tvCardAuthor.setText(author);
         }
 
-        if(card_title != null) {
-            card_title.setText(title);
+        if(tvCardTitle != null) {
+            tvCardTitle.setText(title);
         }
 
-        Picasso.with(mContext).load(thumbnail).into(card_thumbnail_image);
+        Picasso.with(mContext).load(thumbnail).into(ivCardThumbnail);
     }
 }

@@ -30,6 +30,7 @@ public class PostWebViewFragment extends WebViewFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         WebView webView = getWebView();
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(articleUrl);
     }
 }
