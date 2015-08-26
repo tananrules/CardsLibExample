@@ -3,4 +3,4 @@
     android:id="@+id/flPostWebView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"></FrameLayout>
+    xmlns:android="http://schemas.android.com/apk/res/android" />
