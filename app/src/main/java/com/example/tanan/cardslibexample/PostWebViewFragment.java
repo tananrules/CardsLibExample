@@ -49,7 +49,7 @@ public class PostWebViewFragment extends WebViewFragment {
                 String cleanHtml = readability.outerHtml();
 
                 webView.loadData(cleanHtml, "text/html", "utf-8");
-                
+
             }
         }, new Response.ErrorListener() {
             @Override
