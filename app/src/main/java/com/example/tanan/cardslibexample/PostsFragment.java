@@ -34,6 +34,12 @@ public class PostsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         new FetchPosts().execute();
     }
 
@@ -107,10 +113,10 @@ public class PostsFragment extends Fragment {
 
         private void openWebViewFragment(Post post) {
             PostWebViewFragment postWebViewFragment = PostWebViewFragment.newInstance(post.url);
-            FragmentManager fragmentManager = getFragmentManager();
+            FragmentManager fragmentManager = getActivity().getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.flFragmentContainer, postWebViewFragment);
-            fragmentTransaction.commit();
+            fragmentTransaction.addToBackStack(null).commit();
         }
 
 
